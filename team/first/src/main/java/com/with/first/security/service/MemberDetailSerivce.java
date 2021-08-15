@@ -5,7 +5,6 @@ import com.with.first.entity.Member;
 import com.with.first.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,8 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -42,15 +39,11 @@ public class MemberDetailSerivce implements UserDetailsService {
 
         Optional<Member> result = memberRepository.findByMe(username);
 
-        log.info(result);
-
         if(result.isEmpty()){
             throw new UsernameNotFoundException("Check ID");
         }
 
         Member member = result.get();
-
-        log.info("member : " + member);
 
         MemberDTO memberDTO = new MemberDTO(
                 member.getId(),
