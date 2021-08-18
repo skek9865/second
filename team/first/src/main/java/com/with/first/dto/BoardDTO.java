@@ -19,5 +19,7 @@ public class BoardDTO {
 
     private String writer;
 
+    private String password;
+
     private LocalDateTime modDate;
 }
