@@ -6,6 +6,7 @@ import com.with.second.entity.BookEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class BookServiceTests {
     @Autowired
     private BookService service;
 
+    @Transactional
     @Test
     public void register() {
 
@@ -54,6 +56,20 @@ public class BookServiceTests {
 
             System.out.println("dto : " + dto);
         }
+    }
+
+    @Test
+    public void read(){
+
+        BookDto read = service.read(30L);
+
+        System.out.println("read : " + read);
+    }
+
+    @Test
+    public void remove(){
+
+        service.remove(100L);
     }
 
 }

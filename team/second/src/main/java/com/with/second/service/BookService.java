@@ -15,6 +15,10 @@ public interface BookService {
 
     List<BookDto> getList();
 
+    BookDto read(Long bno);
+
+    void remove(Long bno);
+
     default Map<String, Object> dtoToEntity(BookDto dto){
 
         Map<String, Object> entityMap = new HashMap<>();

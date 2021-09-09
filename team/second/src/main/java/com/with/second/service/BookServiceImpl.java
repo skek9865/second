@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,5 +59,32 @@ public class BookServiceImpl implements BookService{
         }
 
         return bookDtos;
+    }
+
+    @Override
+    public BookDto read(Long bno) {
+
+        List<Object[]> result = bookRepository.read(bno);
+
+        BookEntity bookEntity = (BookEntity) result.get(0)[0];
+
+        Book_ImgEntity book_imgEntity = (Book_ImgEntity) result.get(0)[1];
+
+        BookDto bookDto = entitiesToDTO(bookEntity, book_imgEntity);
+
+        log.info("bookDto : " + bookDto);
+
+        return bookDto;
+    }
+
+    @Transactional
+    @Override
+    public void remove(Long bno) {
+
+        log.info("bno : " + bno);
+
+        book_imgRepository.deleteByBno(bno);
+
+        bookRepository.deleteById(bno);
     }
 }
