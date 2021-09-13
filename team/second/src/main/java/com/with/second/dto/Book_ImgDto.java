@@ -13,4 +13,6 @@ public class Book_ImgDto {
     private String iname;
 
     private String uuid;
+
+    private String path;
 }

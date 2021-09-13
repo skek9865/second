@@ -87,4 +87,121 @@ public class BookServiceImpl implements BookService{
 
         bookRepository.deleteById(bno);
     }
+
+    @Override
+    public List<BookDto> getListSearchByName(String keyword) {
+
+        List<Object[]> bookList = bookRepository.getListSearchByName(keyword,Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for(Object[] result : bookList){
+
+            BookDto bookDto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookDto);
+        }
+
+        return bookDtos;
+    }
+
+    @Override
+    public List<BookDto> getListSearchByDepartment(String department){
+
+        log.info("department...: " + department);
+
+        List<Object[]> bookList = bookRepository.getListSearchByDepartment(department,Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for(Object[] result : bookList){
+            BookDto bookDto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookDto);
+        }
+
+        return bookDtos;
+
+    }
+
+    @Override
+    public List<BookDto> getListSearchByDepartmentAndName(String keyword, String department) {
+
+        List<Object[]> bookList = bookRepository.getListSearchByDepartmentAndName(keyword, department, Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for(Object[] result : bookList){
+            BookDto bookDto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookDto);
+        }
+
+        return bookDtos;
+    }
+
+    @Override
+    public List<BookDto> getNewOrOldList(boolean isNew) {
+
+        List<Object[]> bookList = bookRepository.getNewOrOldList(isNew, Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for(Object[] result : bookList){
+            BookDto bookDto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookDto);
+        }
+
+        return bookDtos;
+    }
+
+    @Override
+    public List<BookDto> getOldOrNewListSearchByDepartment(String department, boolean isNew) {
+
+        List<Object[]> booklist = bookRepository.getOldOrNewListSearchByDepartment(department, isNew, Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for (Object[] result : booklist) {
+            BookDto bookdto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookdto);
+        }
+
+        return bookDtos;
+    }
+
+    @Override
+    public List<BookDto> getOldOrNewListSearchByName(String keyword, boolean isNew) {
+
+        List<Object[]> booklist = bookRepository.getOldOrNewListSearchByName(keyword, isNew, Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for (Object[] result : booklist) {
+            BookDto bookdto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookdto);
+        }
+
+        return bookDtos;
+    }
+
+    @Override
+    public List<BookDto> getOldOrNewListSearchByNameAndDepartment(String keyword, String department, boolean isNew) {
+
+        List<Object[]> booklist =
+                bookRepository.getOldOrNewListSearchByNameAndDepartment(keyword, department, isNew, Sort.by("bno").descending());
+
+        List<BookDto> bookDtos = new ArrayList<>();
+
+        for (Object[] result : booklist) {
+            BookDto bookdto = entitiesToDTO((BookEntity) result[0], (Book_ImgEntity) result[1]);
+
+            bookDtos.add(bookdto);
+        }
+
+        return bookDtos;
+    }
 }

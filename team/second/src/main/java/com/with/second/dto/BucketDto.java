@@ -1,11 +1,13 @@
 package com.with.second.dto;
 
 import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
+@ToString
 public class BucketDto {
 
     private Long sno;

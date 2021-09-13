@@ -20,6 +20,8 @@ public class Book_ImgEntity {
 
     private String uuid;
 
+    private String path;
+
     @OneToOne(fetch = FetchType.LAZY)
     private BookEntity bookEntity;
 }
