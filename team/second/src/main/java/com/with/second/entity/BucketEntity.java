@@ -16,8 +16,6 @@ public class BucketEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sno;
 
-    private int price;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private BookEntity bookEntity;
 

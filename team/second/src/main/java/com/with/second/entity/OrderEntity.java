@@ -21,4 +21,6 @@ public class OrderEntity extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MemberEntity memberEntity;
+
+    private String status;
 }

@@ -15,9 +15,11 @@ public class OrderDto {
 
     private LocalDateTime orderDate;
 
-    private Long bno;   //Book bno
+    private Long bno;    //Book bno
 
-    private String name;   //Book name
+    private String bookName;    //Book name
 
-    private String id;  //Member id
+    private String userId;  //Member id
+
+    private String status;
 }

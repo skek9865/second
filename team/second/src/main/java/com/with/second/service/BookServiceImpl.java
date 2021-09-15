@@ -1,7 +1,6 @@
 package com.with.second.service;
 
 import com.with.second.dto.BookDto;
-import com.with.second.dto.Book_ImgDto;
 import com.with.second.entity.BookEntity;
 import com.with.second.entity.Book_ImgEntity;
 import com.with.second.repository.BookRepository;
@@ -12,9 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -26,7 +26,7 @@ public class MemberController {
         return memberRepository.save(MemberEntity.builder()
                 .id(member.get("id"))
                 .department(member.get("department"))
-                .name("name")
+                .name(member.get("name"))
                 .password(passwordEncoder.encode(member.get("password")))
                 .roles(Collections.singletonList("ROLE_MEMBER"))
                 .build()).getId();
