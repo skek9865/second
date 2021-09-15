@@ -13,7 +13,7 @@ public interface OrderService {
 
     List<OrderDto> getList(String id);
 
-    OrderDto read(Long ono);
+    void update(Long ono, String status);
 
     void remove(Long ono);
 

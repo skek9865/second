@@ -1,6 +1,7 @@
 package com.with.second.controller;
 
 import com.with.second.dto.OrderDto;
+import com.with.second.entity.OrderEntity;
 import com.with.second.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -38,14 +39,15 @@ public class OrderController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/read")
-    public ResponseEntity<OrderDto> read(Long ono){
+    @PutMapping("/update")
+    public HttpStatus update(Long ono, String status){
 
         log.info("ono : " + ono);
+        log.info("status : " + status);
 
-        OrderDto read = service.read(ono);
+        service.update(ono, status);
 
-        return new ResponseEntity<>(read, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping("/remove")

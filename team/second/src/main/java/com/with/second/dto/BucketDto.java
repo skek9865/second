@@ -1,6 +1,7 @@
 package com.with.second.dto;
 
 import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class BucketDto {
 
     private String bookName;   //Book name
 
-    private int price;
+    private int price;  //Book price
 
     private String userId;  //Member id
 }

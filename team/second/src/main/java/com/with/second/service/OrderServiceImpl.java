@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -48,26 +49,23 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public OrderDto read(Long ono) {
-
-        log.info("ono : " + ono);
-
-        List<Object[]> list = orderRepository.read(ono, Sort.by("ono").descending());
-
-        OrderEntity entity = (OrderEntity) list.get(0)[0];
-
-        String name = (String) list.get(0)[1];
-
-        OrderDto orderDto = entityToDTO(entity, name);
-
-        return orderDto;
-    }
-
-    @Override
     public void remove(Long ono) {
 
         log.info("ono : " + ono);
 
         orderRepository.deleteById(ono);
+    }
+
+    @Override
+    public void update(Long ono, String status) {
+
+        Optional<OrderEntity> result = orderRepository.findById(ono);
+
+        if (result.isPresent()) {
+            OrderEntity orderEntity = result.get();
+            orderEntity.changeStatus(status);
+
+            orderRepository.save(orderEntity);
+        }
     }
 }
