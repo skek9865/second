@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService{
 
         for(Object[] result : results){
 
-            OrderDto orderDto = entityToDTO((OrderEntity) result[0], (String)result[1]);
+            OrderDto orderDto = entityToDTO((OrderEntity) result[0], (String)result[1],(Long)result[2]);
 
             orderDtos.add(orderDto);
         }

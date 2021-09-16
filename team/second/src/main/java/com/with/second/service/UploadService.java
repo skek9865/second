@@ -9,11 +9,11 @@ public interface UploadService {
 
     Map<String,String> upload(String uploadPath, MultipartFile uploadFile);
 
-    File getReal (String uploadPath, Long inum);
+    File getReal (String uploadPath, Long ino);
 
-    File getFiction (String uploadPath, Long inum);
+    File getFiction (String uploadPath, Long ino);
 
-    boolean remove(String uploadPath, Long inum);
+    boolean remove(String uploadPath, Long ino);
 
-    Long getBno(Long inum);
+    Long getBno(Long ino);
 }

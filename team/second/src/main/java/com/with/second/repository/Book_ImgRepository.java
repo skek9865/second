@@ -8,7 +8,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface Book_ImgRepository extends JpaRepository<Book_ImgEntity,Long> {
 
-    @Modifying
-    @Query("delete from Book_ImgEntity i where i.bookEntity.bno =:bno")
-    void deleteByBno(@Param("bno") Long bno);
+
 }

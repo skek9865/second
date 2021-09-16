@@ -9,7 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = "book_imgEntity")
 public class BookEntity extends BaseEntity{
 
     @Id
@@ -25,4 +25,7 @@ public class BookEntity extends BaseEntity{
     private boolean isNew;
 
     private String status;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Book_ImgEntity book_imgEntity;
 }

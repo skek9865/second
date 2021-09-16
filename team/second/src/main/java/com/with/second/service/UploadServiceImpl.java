@@ -1,6 +1,7 @@
 package com.with.second.service;
 
 import com.with.second.entity.Book_ImgEntity;
+import com.with.second.repository.BookRepository;
 import com.with.second.repository.Book_ImgRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +24,8 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class UploadServiceImpl implements UploadService{
+
+    private final BookRepository bookRepository;
 
     private final Book_ImgRepository repository;
 
@@ -74,9 +77,9 @@ public class UploadServiceImpl implements UploadService{
     }
 
     @Override
-    public File getReal(String uploadPath, Long inum) {
+    public File getReal(String uploadPath, Long ino) {
 
-        Optional<Book_ImgEntity> byId = repository.findById(inum);
+        Optional<Book_ImgEntity> byId = repository.findById(ino);
 
         Book_ImgEntity book_imgEntity = byId.get();
 
@@ -87,9 +90,9 @@ public class UploadServiceImpl implements UploadService{
     }
 
     @Override
-    public File getFiction(String uploadPath, Long inum) {
+    public File getFiction(String uploadPath, Long ino) {
 
-        Optional<Book_ImgEntity> byId = repository.findById(inum);
+        Optional<Book_ImgEntity> byId = repository.findById(ino);
 
         Book_ImgEntity book_imgEntity = byId.get();
 
@@ -100,9 +103,9 @@ public class UploadServiceImpl implements UploadService{
     }
 
     @Override
-    public boolean remove(String uploadPath, Long inum) {
+    public boolean remove(String uploadPath, Long ino) {
 
-        Optional<Book_ImgEntity> byId = repository.findById(inum);
+        Optional<Book_ImgEntity> byId = repository.findById(ino);
 
         Book_ImgEntity book_imgEntity = byId.get();
 
@@ -135,16 +138,10 @@ public class UploadServiceImpl implements UploadService{
     }
 
     @Override
-    public Long getBno(Long inum) {
+    public Long getBno(Long ino) {
 
-        Optional<Book_ImgEntity> byId = repository.findById(inum);
+        Long bno = bookRepository.getBno(ino);
 
-        if(byId == null){
-            return 0L;
-        }
-
-        Book_ImgEntity book_imgEntity = byId.get();
-
-        return book_imgEntity.getBookEntity().getBno();
+        return bno;
     }
 }

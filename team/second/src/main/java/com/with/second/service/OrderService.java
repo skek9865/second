@@ -17,11 +17,12 @@ public interface OrderService {
 
     void remove(Long ono);
 
-    default OrderDto entityToDTO(OrderEntity entity, String bookName){
+    default OrderDto entityToDTO(OrderEntity entity, String name, Long ino){
 
         BookEntity bookEntity = BookEntity.builder()
                 .bno(entity.getBookEntity().getBno())
-                .name(bookName)
+                .name(name)
+                .book_imgEntity(entity.getBookEntity().getBook_imgEntity())
                 .build();
 
         MemberEntity memberEntity = MemberEntity.builder().id(entity.getMemberEntity().getId()).build();
@@ -33,6 +34,7 @@ public interface OrderService {
                 .userId(memberEntity.getId())
                 .orderDate(entity.getRegdate())
                 .status(entity.getStatus())
+                .ino(bookEntity.getBook_imgEntity().getIno())
                 .build();
 
         return dto;

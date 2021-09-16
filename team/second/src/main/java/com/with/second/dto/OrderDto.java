@@ -19,6 +19,8 @@ public class OrderDto {
 
     private String bookName;    //Book name
 
+    private Long ino;   //Book_Img ino
+
     private String userId;  //Member id
 
     private String status;
