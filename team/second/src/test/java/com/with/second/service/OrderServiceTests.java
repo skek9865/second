@@ -19,7 +19,7 @@ public class OrderServiceTests {
 
         IntStream.rangeClosed(1,10).forEach(i -> {
             OrderDto dto = OrderDto.builder()
-                    .bno(1L)
+                    .bno(2L)
                     .bookName("자바 ORM 표준 JPA 프로그래밍")
                     .userId("User2")
                     .status("배송중")

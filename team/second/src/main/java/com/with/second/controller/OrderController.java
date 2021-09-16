@@ -1,7 +1,6 @@
 package com.with.second.controller;
 
 import com.with.second.dto.OrderDto;
-import com.with.second.entity.OrderEntity;
 import com.with.second.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
